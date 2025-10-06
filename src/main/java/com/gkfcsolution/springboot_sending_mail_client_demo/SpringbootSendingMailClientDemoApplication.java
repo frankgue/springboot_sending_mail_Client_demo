@@ -1,6 +1,7 @@
 package com.gkfcsolution.springboot_sending_mail_client_demo;
 
 import com.gkfcsolution.springboot_sending_mail_client_demo.service.EmailSenderService;
+import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +17,13 @@ public class SpringbootSendingMailClientDemoApplication {
     }
 
     @EventListener(ApplicationReadyEvent.class)
+    public void triggerMail() {
+        emailSenderService.sendEmailWithAttachment("frankguekeng11@Gmail.com", "Hello Frank From SpringBoot Sender mail body message", "Hello this is the famous subject", "C:\\Users\\Frank GUEKENG\\Pictures\\1x\\Mariage.png");
+    }
+
+ /*   @EventListener(ApplicationReadyEvent.class)
     public void triggerMail(){
         emailSenderService.sendSimpleEmail("frankguekeng11@Gmail.com", "Hello Frank From SpringBoot Sender mail body message", "Hello this is the famous subject");
-    }
+    }*/
 
 }
